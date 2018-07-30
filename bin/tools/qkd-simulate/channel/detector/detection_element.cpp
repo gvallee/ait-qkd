@@ -84,6 +84,7 @@ void detection_element::handle(event const & cEvent) {
         
         // dark count event
         add_next_dark_count_event();
+        [[fallthrough]];
         // !continue with next case
         
     case event::type::DETECT: 

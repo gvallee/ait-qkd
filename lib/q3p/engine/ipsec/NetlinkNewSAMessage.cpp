@@ -65,15 +65,15 @@ NetlinkNewSAMessage::NetlinkNewSAMessage(IPAddress source_add, IPAddress destina
 
 	/*FILL payload structure*/
 	//ciphers: aes, blowfish, des, rc2,
-	strncpy(payload.alg.alg_name, config.getCipher().c_str(), sizeof payload.alg.alg_name);
-	payload.alg.alg_key_len = val.getKeyLength();
-	if(payload.alg.alg_key_len>MAX_KEY_SIZE) throw KeyException("Crypto algorithm unknown.");
-	if(config.getKey()) memcpy((void*)payload.key, (void*)config.getKey(), payload.alg.alg_key_len);
+	strncpy(payload.alg[0].alg_name, config.getCipher().c_str(), sizeof payload.alg[0].alg_name);
+	payload.alg[0].alg_key_len = val.getKeyLength();
+	if(payload.alg[0].alg_key_len>MAX_KEY_SIZE) throw KeyException("Crypto algorithm unknown.");
+	if(config.getKey()) memcpy((void*)payload.key, (void*)config.getKey(), payload.alg[0].alg_key_len);
 
 
 
 
-	int size_unal = sizeof payload.rtattr + sizeof payload.alg + payload.alg.alg_key_len;
+	int size_unal = sizeof payload.rtattr + sizeof payload.alg[0] + payload.alg[0].alg_key_len;
 	payload_size = ((size_unal%4)==0)?size_unal:((size_unal/4)+1)*4;
 	payload.rtattr.rta_len= payload_size; //MORE ACCURATE
 	//payload.rtattr.rta_len= sizeof(payload); //EASIER

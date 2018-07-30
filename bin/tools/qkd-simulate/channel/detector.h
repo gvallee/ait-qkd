@@ -261,7 +261,7 @@ public:
      * 
      * @param   nDarkCountRate      the new detector dark count rate  in [Hz]
      */
-    void set_dark_count_rate(double nDarkCountRate) throw(std::out_of_range);
+    void set_dark_count_rate(double nDarkCountRate); // throw(std::out_of_range);
 
     
     /**
@@ -269,7 +269,7 @@ public:
      * 
      * @param   eDetectionMode      the detection mode
      */
-    void set_detection_mode(detection_mode eDetectionMode) throw(std::out_of_range);
+    void set_detection_mode(detection_mode eDetectionMode); // throw(std::out_of_range);
     
     
     /**
@@ -277,7 +277,7 @@ public:
      * 
      * @param   nDownTime           new detector down time in [ns]
      */
-    void set_down_time(double nDownTime) throw(std::out_of_range);
+    void set_down_time(double nDownTime); // throw(std::out_of_range);
 
     
     /**
@@ -285,7 +285,7 @@ public:
      * 
      * @param   nEfficiency         the new detector efficiency in [%]
      */
-    void set_efficiency(double nEfficiency) throw(std::out_of_range);
+    void set_efficiency(double nEfficiency); // throw(std::out_of_range);
    
 
     /**
@@ -293,7 +293,7 @@ public:
      * 
      * @param   nEventTableSize     the new event table size
      */
-    void set_event_table_size(uint64_t nEventTableSize) throw(std::out_of_range);
+    void set_event_table_size(uint64_t nEventTableSize); // throw(std::out_of_range);
 
 
     /**
@@ -317,7 +317,7 @@ public:
      * 
      * @param   nDistanceIndepLoss      the new loss in [dB]
      */
-    void set_loss_rate(double nLossRate) throw(std::out_of_range);
+    void set_loss_rate(double nLossRate); // throw(std::out_of_range);
     
 
     /**
@@ -325,7 +325,7 @@ public:
      * 
      * @param   nPhotonTimeDelay    new photon detection delay time in [ns]
      */
-    void set_photon_time_delay(double nPhotonTimeDelay) throw(std::out_of_range);
+    void set_photon_time_delay(double nPhotonTimeDelay); // throw(std::out_of_range);
     
     
     /**
@@ -333,7 +333,7 @@ public:
      * 
      * @param   nPhotonTimeStndDeviation    new standard deviation of photon time distribution in [ns]
      */
-    void set_photon_time_stnd_deviation(double nPhotonTimeStndDeviation) throw(std::out_of_range);
+    void set_photon_time_stnd_deviation(double nPhotonTimeStndDeviation); // throw(std::out_of_range);
     
 
     /**
@@ -341,7 +341,8 @@ public:
      * 
      * @param   nSyncDelay      the sync delay time in ns
      */
-    void set_sync_delay(double nSyncDelay) throw(std::out_of_range) {
+    void set_sync_delay(double nSyncDelay) //throw(std::out_of_range)
+    {
         if (!m_bAlice) {
             if (nSyncDelay < 0.0) throw std::out_of_range("detector::set_sync_delay: nSyncDelay");
             m_cSyncPulseReceiver->set_delay(nSyncDelay);
@@ -354,7 +355,8 @@ public:
      * 
      * @param   nSyncStdnDeviation      the sync detection jitter standard deviation in [ns]
      */
-    void set_sync_stnd_deviation(double nSyncStdnDeviation) throw(std::out_of_range) { 
+    void set_sync_stnd_deviation(double nSyncStdnDeviation) // throw(std::out_of_range)
+    { 
         if (!m_bAlice) {
             if (nSyncStdnDeviation < 0.0) throw std::out_of_range("detector::set_sync_stnd_deviation: nSyncStdnDeviation");
             m_cSyncPulseReceiver->set_jitter(nSyncStdnDeviation);
@@ -367,7 +369,7 @@ public:
      *
      * @param   nTimeSlotWidth      the new time slot width [ns]
      */
-    void set_time_slot_width(double nTimeSlotWidth) throw(std::out_of_range);
+    void set_time_slot_width(double nTimeSlotWidth); // throw(std::out_of_range);
     
     
     /**

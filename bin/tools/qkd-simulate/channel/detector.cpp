@@ -523,7 +523,8 @@ void detector::init(channel_event_handler * cParent, channel_event_manager * cMa
  * 
  * @param   nDarkCountRate      the new detector dark count rate  in [Hz]
  */
-void detector::set_dark_count_rate(double nDarkCountRate) throw(std::out_of_range) {
+void detector::set_dark_count_rate(double nDarkCountRate) //throw(std::out_of_range)
+{
     if (nDarkCountRate < 0.0 || nDarkCountRate > 10000.0) throw std::out_of_range("detector::set_dark_count_rate: nDarkCountRate");
     m_nDarkCountRate = nDarkCountRate;
     update_dark_count_rate();
@@ -535,7 +536,8 @@ void detector::set_dark_count_rate(double nDarkCountRate) throw(std::out_of_rang
  * 
  * @param   eDetectionMode      the detection mode
  */
-void detector::set_detection_mode(detection_mode eDetectionMode) throw(std::out_of_range) {
+void detector::set_detection_mode(detection_mode eDetectionMode) // throw(std::out_of_range)
+{
 
     if ((!m_bAlice) && eDetectionMode == detection_mode::SYNC_INITIATOR_READY) throw std::out_of_range("detector::set_detection_mode: p_detection_mode");
     
@@ -569,7 +571,8 @@ void detector::set_detection_mode(detection_mode eDetectionMode) throw(std::out_
  * 
  * @param   nDownTime           new detector down time in [ns]
  */
-void detector::set_down_time(double nDownTime) throw(std::out_of_range) {
+void detector::set_down_time(double nDownTime) // throw(std::out_of_range)
+{
     if (nDownTime < 0.0 || nDownTime > 10000.0) throw std::out_of_range("detector::set_down_time: nDownTime");
     m_nDownTime = nDownTime;
     update_detection_loss();
@@ -581,7 +584,8 @@ void detector::set_down_time(double nDownTime) throw(std::out_of_range) {
  * 
  * @param   nEfficiency         the new detector efficiency in [%]
  */
-void detector::set_efficiency(double nEfficiency) throw(std::out_of_range) {
+void detector::set_efficiency(double nEfficiency) //throw(std::out_of_range)
+{
     if (nEfficiency < 0.0 || nEfficiency > 100.0) throw std::out_of_range("detector::set_efficiency: nEfficiency");
     m_nEfficiency = nEfficiency / 100.0; // P.G.: changed nEfficiency to nEfficiency / 100.0
     update_detection_loss();
@@ -593,7 +597,8 @@ void detector::set_efficiency(double nEfficiency) throw(std::out_of_range) {
  * 
  * @param   nEventTableSize     the new event table size
  */
-void detector::set_event_table_size(uint64_t nEventTableSize) throw(std::out_of_range) {
+void detector::set_event_table_size(uint64_t nEventTableSize) //throw(std::out_of_range)
+{
     if (nEventTableSize > EVENT_TABLE_LEN_MAX) throw std::out_of_range("detector::set_event_table_size: nEventTableSize");
     m_nEventTableSize = nEventTableSize; 
     m_cEventBuffer.set_buffer_size(nEventTableSize); 
@@ -605,7 +610,8 @@ void detector::set_event_table_size(uint64_t nEventTableSize) throw(std::out_of_
  * 
  * @param   nLossRate           the new loss in [dB]
  */
-void detector::set_loss_rate(double nLossRate) throw(std::out_of_range) {
+void detector::set_loss_rate(double nLossRate) //throw(std::out_of_range)
+{
     if (nLossRate < 0.0 || nLossRate > 30.0) throw std::out_of_range("detector::set_loss: nLossRate");
     m_nLossRate = nLossRate;
     update_detection_loss();
@@ -617,7 +623,8 @@ void detector::set_loss_rate(double nLossRate) throw(std::out_of_range) {
  * 
  * @param   nPhotonTimeDelay    new photon detection time delay in [ns]
  */
-void detector::set_photon_time_delay(double nPhotonTimeDelay) throw(std::out_of_range) {
+void detector::set_photon_time_delay(double nPhotonTimeDelay) //throw(std::out_of_range)
+{
     if (nPhotonTimeDelay < 0.0) throw std::out_of_range("detector::set_photon_time_delay: nPhotonTimeDelay");
     m_nPhotonTimeDelay = nPhotonTimeDelay;
     update_jitter();
@@ -629,7 +636,8 @@ void detector::set_photon_time_delay(double nPhotonTimeDelay) throw(std::out_of_
  * 
  * @param   nPhotonTimeStndDeviation    new standard deviation of photon time distribution in [ns]
  */
-void detector::set_photon_time_stnd_deviation(double nPhotonTimeStndDeviation) throw(std::out_of_range) {
+void detector::set_photon_time_stnd_deviation(double nPhotonTimeStndDeviation) //throw(std::out_of_range)
+{
     if (nPhotonTimeStndDeviation < 0.0 || nPhotonTimeStndDeviation > 100.0) throw std::out_of_range("detector::set_photon_time_stnd_deviation: nPhotonTimeStndDeviation");
     m_nPhotonTimeStndDeviation = nPhotonTimeStndDeviation;
     update_jitter();
@@ -641,7 +649,8 @@ void detector::set_photon_time_stnd_deviation(double nPhotonTimeStndDeviation) t
  *
  * @param   nTimeSlotWidth      the new time slot width [ns]
  */
-void detector::set_time_slot_width(double nTimeSlotWidth) throw(std::out_of_range) {
+void detector::set_time_slot_width(double nTimeSlotWidth) //throw(std::out_of_range)
+{
     if (nTimeSlotWidth < 0.0 || nTimeSlotWidth > 1000.0) throw std::out_of_range("detector::set_time_slot_width: nTimeSlotWidth");
     m_nTimeSlotWidth = nTimeSlotWidth;
     m_cWindowGenerator.set_window_width(nTimeSlotWidth);

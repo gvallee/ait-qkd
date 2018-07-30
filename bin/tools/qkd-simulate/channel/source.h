@@ -115,7 +115,7 @@ public:
      * 
      * @param   nMultiPhotonRate        the new multi-photon rate
      */
-    void set_multi_photon_rate(double nMultiPhotonRate) throw(std::out_of_range);
+    void set_multi_photon_rate(double nMultiPhotonRate); //throw(std::out_of_range);
     
         
     /**
@@ -123,7 +123,7 @@ public:
      * 
      * @param   nPhotonRate     the new source photon rate 
      */
-    void set_photon_rate(double nPhotonRate) throw(std::out_of_range);
+    void set_photon_rate(double nPhotonRate); //throw(std::out_of_range);
     
 
     /**
@@ -131,7 +131,7 @@ public:
      * 
      * @param   nSignalErrorProbability      the new signal/error probability
      */
-    void set_signal_error_probability(double nSignalErrorProbability) throw(std::out_of_range);
+    void set_signal_error_probability(double nSignalErrorProbability); // throw(std::out_of_range);
 
     
     /**

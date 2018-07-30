@@ -55,7 +55,8 @@ using namespace qkd::simulate;
  * @param   nId         identifier of the photon pair to get 
  * @return  a reference to the photon pair with the given identifier.
  */
-photon_pair& photon_pair_manager::get(uint64_t nId) throw(std::out_of_range) {
+photon_pair& photon_pair_manager::get(uint64_t nId) //throw(std::out_of_range)
+{
     return m_cPhotonPairs.at(nId);
 }
 
@@ -78,7 +79,8 @@ void photon_pair_manager::init_simulation() {
  * @param   cPhotonPair     photon pair to insert
  * @return  identifier of the photon pair in the map if the insertion was successful.
  */
-uint64_t photon_pair_manager::insert(photon_pair const & cPhotonPair) throw(std::runtime_error) {
+uint64_t photon_pair_manager::insert(photon_pair const & cPhotonPair) //throw(std::runtime_error)
+{
     
     assert(m_cManager != nullptr);
     

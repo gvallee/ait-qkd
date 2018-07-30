@@ -13,3 +13,6 @@ doc/handbook/*.log
 doc/handbook/*.out
 doc/handbook/*.synctex.gz
 doc/handbook/*.toc
+
+# ignore the logs that are automatically created but quite irrelevant to us
+doc/simulator/missfont.log

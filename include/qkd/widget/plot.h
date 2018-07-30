@@ -42,7 +42,7 @@
 // Qwt
 #if defined(__GNUC__) and not defined(__clang__)
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-pedantic"
+//#pragma GCC diagnostic ignored "-pedantic"
 #endif
 
 #include <qwt/qwt_plot.h>

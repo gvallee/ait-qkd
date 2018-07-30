@@ -472,7 +472,8 @@ void channel::set_pipe_bob(std::string const & sPipe) {
  *  
  * @param   nStndDeviation          the new standard deviation for sync signal in [ns]
  */
-void channel::set_sync_stnd_deviation(double nStndDeviation) throw(std::out_of_range) { 
+void channel::set_sync_stnd_deviation(double nStndDeviation) //throw(std::out_of_range)
+{ 
     
     if (nStndDeviation >= 0.0 && nStndDeviation <= 100.0) {
         

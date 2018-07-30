@@ -71,7 +71,7 @@ public:
      * @param   nId         identifier of the photon pair to get 
      * @return  a reference to the photon pair with the given identifier.
      */
-    photon_pair & get(uint64_t nId) throw(std::out_of_range);
+    photon_pair & get(uint64_t nId); // throw(std::out_of_range);
     
     
     /**
@@ -89,7 +89,7 @@ public:
      * @param   cPhotonPair     photon pair to insert
      * @return  identifier of the photon pair in the map if the insertion was successful.
      */
-    uint64_t insert(photon_pair const & cPhotonPair) throw(std::runtime_error);
+    uint64_t insert(photon_pair const & cPhotonPair); // throw(std::runtime_error);
 
     
     /**

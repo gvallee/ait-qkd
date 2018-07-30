@@ -90,11 +90,11 @@ void random_hmac_sha::get(char * cBuffer, uint64_t nSize) {
         cPlaintext << m_nCounter;
         
         // re-init
-        EVP_DigestInit_ex(&m_cMessageDigestContext, m_cMessageDigestAlgorithm, nullptr);
-        EVP_DigestUpdate(&m_cMessageDigestContext, cPlaintext.get(), cPlaintext.size());
+        EVP_DigestInit_ex(m_cMessageDigestContext, m_cMessageDigestAlgorithm, nullptr);
+        EVP_DigestUpdate(m_cMessageDigestContext, cPlaintext.get(), cPlaintext.size());
         
         nDigestLen = 0;
-        EVP_DigestFinal_ex(&m_cMessageDigestContext, cDigest, &nDigestLen);
+        EVP_DigestFinal_ex(m_cMessageDigestContext, cDigest, &nDigestLen);
         memcpy(cBuffer + nRead, cDigest, std::min(nSize - nRead, (uint64_t)nDigestLen));
         
         nRead += std::min(nSize - nRead, (uint64_t)nDigestLen);
@@ -106,6 +106,9 @@ void random_hmac_sha::get(char * cBuffer, uint64_t nSize) {
  * init the object
  */
 void random_hmac_sha::init() {
+
+    /* GV - TODO: free by calling EVP_MD_CTX_free(); unfortunately there is no random_hmac_sha::fini() */
+    m_cMessageDigestContext = EVP_MD_CTX_new ();
     
     if (m_sHMACSHA.substr(0, std::string("hmac-sha").length()) != "hmac-sha") {
         throw qkd::exception::randomengine_error("wrong url syntax on init of hmac-sha random engine");
@@ -121,7 +124,7 @@ void random_hmac_sha::init() {
     // parse the second token --> key
     qkd::utility::memory cKey = qkd::utility::memory::from_hex(sTokenScheme[1]);
     
-    EVP_MD_CTX_init(&m_cMessageDigestContext);
+    EVP_MD_CTX_init(m_cMessageDigestContext);
     
     // select on key size
     switch (cKey.size()) {

@@ -127,7 +127,7 @@ private:
     /**
      * OpenSSL digest context
      */
-    EVP_MD_CTX m_cMessageDigestContext;
+    EVP_MD_CTX *m_cMessageDigestContext;
 
     
 };

@@ -224,7 +224,8 @@ void fiber::init(channel_event_handler * cParent, channel_event_manager * cManag
  *
  * @param  nAbsorptionCoefficient       the new fiber absorption coefficient in [db/km]
  */
-void fiber::set_absorption_coefficient(double nAbsorptionCoefficient) throw(std::out_of_range) { 
+void fiber::set_absorption_coefficient(double nAbsorptionCoefficient) //throw(std::out_of_range)
+{ 
     if (nAbsorptionCoefficient < 0.0 || nAbsorptionCoefficient > 10.0) throw std::out_of_range("fiber::set_absorption_coefficient: nAbsorptionCoefficient"); 
     m_nAbsorptionCoefficient = nAbsorptionCoefficient;
     update_absorption_coefficient();
@@ -236,7 +237,8 @@ void fiber::set_absorption_coefficient(double nAbsorptionCoefficient) throw(std:
  *
  * @param  nLength          the new fiber length
  */
-void fiber::set_length(double nLength) throw(std::out_of_range) { 
+void fiber::set_length(double nLength) //throw(std::out_of_range)
+{ 
     if (nLength < 0.0 || nLength > 500.0) throw std::out_of_range("fiber::set_length: nLength"); 
     m_nLength = nLength;
     m_fiber_quantum.set_length(m_nLength);
@@ -248,7 +250,8 @@ void fiber::set_length(double nLength) throw(std::out_of_range) {
  *
  * @param  nNoisePhotonRate         the new fiber noise photon rate in 1/s
  */
-void fiber::set_noise_photon_rate(double nNoisePhotonRate) throw(std::out_of_range) { 
+void fiber::set_noise_photon_rate(double nNoisePhotonRate) // throw(std::out_of_range)
+{ 
     if (nNoisePhotonRate < 0.0) throw std::out_of_range("fiber::set_noise_photon_rate: nNoisePhotonRate"); 
     m_noise_photon_source.set_noise_photon_rate(nNoisePhotonRate);
 }
@@ -258,7 +261,8 @@ void fiber::set_noise_photon_rate(double nNoisePhotonRate) throw(std::out_of_ran
  * 
  * @param   nDelay      photon delay time in ns
  */
-void fiber::set_photon_delay(double nDelay) throw(std::out_of_range) {
+void fiber::set_photon_delay(double nDelay) // throw(std::out_of_range)
+{
     if (nDelay < 0.0) throw std::out_of_range("fiber::set_photon_delay: nDelay");
     m_delay_line.set_delay_time(nDelay);
 }
@@ -269,7 +273,8 @@ void fiber::set_photon_delay(double nDelay) throw(std::out_of_range) {
  * 
  * @param   nDelay      sync pulse delay time in ns 
  */
-void fiber::set_sync_delay(double nDelay) throw(std::out_of_range) {
+void fiber::set_sync_delay(double nDelay) //throw(std::out_of_range)
+{
     if (nDelay < 0.0) throw std::out_of_range("fiber::set_sync_delay: nDelay");
     m_delay_line_sync.set_delay_time(nDelay);
 }

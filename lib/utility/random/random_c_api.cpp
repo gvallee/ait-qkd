@@ -40,7 +40,7 @@
 #include <qkd/utility/random.h>
 
 #include "random_c_api.h"
-
+#include <vector>
 
 using namespace qkd::utility;
 

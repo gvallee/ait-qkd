@@ -32,6 +32,7 @@
 
 // ------------------------------------------------------------
 // incs
+#include <math.h>
 
 // ait
 #include <qkd/utility/random.h>

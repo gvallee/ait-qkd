@@ -88,7 +88,7 @@ public:
      * @param   cEvent      the event to add
      * @return  id of new event inserted
      */
-    uint64_t add_event(event & cEvent) throw (std::runtime_error);
+    uint64_t add_event(event & cEvent); // throw (std::runtime_error);
     
 
     /** 

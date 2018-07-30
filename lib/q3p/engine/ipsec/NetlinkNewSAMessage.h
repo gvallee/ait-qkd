@@ -44,15 +44,15 @@ class NetlinkNewSAMessage : public NetlinkMessage {
 	public:
 		NetlinkNewSAMessage(IPAddress source_add, IPAddress destination_add, NetlinkSAConfig config=NetlinkSAConfig());
 		inline void setKey(char* key=NULL){
-			if(key) memcpy(payload.key, key, payload.alg.alg_key_len);
+			if(key) memcpy(payload.key, key, payload.alg[0].alg_key_len);
 		};
 	private:
 		xfrm_usersa_info 		xsinfo;
 		class NewSAPayload{
-		public:
-			Rtattr rtattr;
-			xfrm_algo alg;
-			char key[MAX_KEY_SIZE];
+			public:
+				Rtattr rtattr;
+				struct xfrm_algo alg[1]; 
+				char key[MAX_KEY_SIZE];
 		}payload;
 		//int payload_size;
 };

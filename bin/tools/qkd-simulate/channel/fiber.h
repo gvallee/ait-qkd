@@ -139,7 +139,7 @@ public:
      *
      * @param  nAbsorptionCoefficient       the new fiber absorption coefficient in [db/km]
      */
-    void set_absorption_coefficient(double nAbsorptionCoefficient) throw(std::out_of_range);
+    void set_absorption_coefficient(double nAbsorptionCoefficient); // throw(std::out_of_range);
     
     
     /**
@@ -147,7 +147,7 @@ public:
      *
      * @param  nLength          the new fiber length
      */
-    void set_length(double nLength) throw(std::out_of_range);
+    void set_length(double nLength); //throw(std::out_of_range);
 
     
     /**
@@ -163,7 +163,7 @@ public:
      *
      * @param  nNoisePhotonRate         the new fiber noise_photon_rate
      */
-    void set_noise_photon_rate(double nNoisePhotonRate) throw(std::out_of_range);
+    void set_noise_photon_rate(double nNoisePhotonRate); // throw(std::out_of_range);
     
     
     /**
@@ -171,7 +171,7 @@ public:
      * 
      * @param   nDelay      photon delay time in ns
      */
-    void set_photon_delay(double nDelay ) throw(std::out_of_range);
+    void set_photon_delay(double nDelay); // throw(std::out_of_range);
     
     
     /**
@@ -179,7 +179,7 @@ public:
      * 
      * @param   nDelay      sync pulse delay time in ns 
      */
-    void set_sync_delay(double nDelay) throw(std::out_of_range);
+    void set_sync_delay(double nDelay); //throw(std::out_of_range);
 
 
     /**

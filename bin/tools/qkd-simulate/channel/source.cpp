@@ -142,7 +142,8 @@ void source::handle(event const & cEvent) {
  * 
  * @param   nMultiPhotonRate        the new multiphoton rate
  */
-void source::set_multi_photon_rate(double nMultiPhotonRate) throw(std::out_of_range) { 
+void source::set_multi_photon_rate(double nMultiPhotonRate) //throw(std::out_of_range)
+{ 
     if (nMultiPhotonRate < 0.0 || nMultiPhotonRate > 10000.0) throw std::out_of_range("source::set_multi_photon_rate: nMultiPhotonRate"); 
     m_nMultiPhotonRate = nMultiPhotonRate;
 }
@@ -153,7 +154,8 @@ void source::set_multi_photon_rate(double nMultiPhotonRate) throw(std::out_of_ra
  * 
  * @param   nPhotonRate     the new source photon rate 
  */
-void source::set_photon_rate(double nPhotonRate) throw(std::out_of_range) { 
+void source::set_photon_rate(double nPhotonRate) //throw(std::out_of_range)
+{ 
     if (nPhotonRate < 0.0 || nPhotonRate > 10000000.0) throw std::out_of_range("source::set_photon_rate: nPhotonRate"); 
     m_nPhotonRate = nPhotonRate;
 }
@@ -164,7 +166,8 @@ void source::set_photon_rate(double nPhotonRate) throw(std::out_of_range) {
  * 
  * @param   nSignalErrorProbability      the new signal/error probability
  */
-void source::set_signal_error_probability(double nSignalErrorProbability) throw(std::out_of_range) {
+void source::set_signal_error_probability(double nSignalErrorProbability) //throw(std::out_of_range)
+{
     if (nSignalErrorProbability < 0.0 || nSignalErrorProbability > 100.0) throw std::out_of_range("source::set_signal_error_probability: nSignalErrorProbability");
     m_nSignalErrorProbability = nSignalErrorProbability / 100.0; // P.G.: added / 100.0
 }

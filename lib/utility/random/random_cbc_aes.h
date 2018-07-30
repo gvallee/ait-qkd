@@ -121,7 +121,7 @@ private:
     /**
      * OpenSSL cypher context
      */
-    EVP_CIPHER_CTX m_cCipherContext;    
+    EVP_CIPHER_CTX *m_cCipherContext;    
     
 };
 

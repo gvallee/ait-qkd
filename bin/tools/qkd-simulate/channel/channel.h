@@ -311,7 +311,8 @@ public:
      * 
      * @param   nSimEndTime     the simulation end time in [us]
      */
-    void set_sim_end_time(double nSimEndTime) throw(std::out_of_range) { 
+    void set_sim_end_time(double nSimEndTime) // throw(std::out_of_range)
+    { 
         if (nSimEndTime >= 0.0) m_cManager.set_sim_end_time(static_cast<int64_t>(nSimEndTime / (1e6 * ttm::RESOLUTION)));
         else throw std::out_of_range("channel_bb84::set_sim_end_time: nSimEndTime");
     }
@@ -322,7 +323,7 @@ public:
      *  
      * @param   nStndDeviation          the new standard deviation for sync signal in [ns]
      */
-    void set_sync_stnd_deviation(double nStndDeviation) throw(std::out_of_range);
+    void set_sync_stnd_deviation(double nStndDeviation); // throw(std::out_of_range);
     
     
     /**
@@ -330,7 +331,8 @@ public:
      * 
      * @param   nTimeslotCenterShift        timeslot center shift in ns
      */
-    void set_timeslot_center_shift(double nTimeslotCenterShift ) throw (std::out_of_range) {
+    void set_timeslot_center_shift(double nTimeslotCenterShift ) //throw (std::out_of_range)
+    {
         m_nTimeslotCenterShift = nTimeslotCenterShift;
         update_delay_times();
     }

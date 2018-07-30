@@ -84,8 +84,8 @@ void random_cbc_aes::get(char * cBuffer, uint64_t nSize) {
     // run CBC-AES
     qkd::utility::memory cCipher(cPlaintext.size());
     int nEncrypted = 0;
-    EVP_EncryptInit_ex(&m_cCipherContext, nullptr, nullptr, nullptr, nullptr);
-    EVP_EncryptUpdate(&m_cCipherContext, cCipher.get(), &nEncrypted, cPlaintext.get(), cCipher.size());
+    EVP_EncryptInit_ex(m_cCipherContext, nullptr, nullptr, nullptr, nullptr);
+    EVP_EncryptUpdate(m_cCipherContext, cCipher.get(), &nEncrypted, cPlaintext.get(), cCipher.size());
     
     // copy final result
     memcpy(cBuffer, cCipher.get(), nSize);
@@ -96,6 +96,9 @@ void random_cbc_aes::get(char * cBuffer, uint64_t nSize) {
  * init the object
  */
 void random_cbc_aes::init() {
+
+    /* GV - TODO: free this structure by calling EVP_CIPHER_CTX_free. Unfortunately there is no random_cbc_aes::fini() */
+    m_cCipherContext = EVP_CIPHER_CTX_new ();
     
     if (m_sCBCAES.substr(0, std::string("cbc-aes").length()) != "cbc-aes") {
         throw qkd::exception::randomengine_error("wrong url syntax on init of cbc-aes random engine");
@@ -116,23 +119,23 @@ void random_cbc_aes::init() {
     cIV << qkd::utility::environment::process_id();
     cIV << (uint64_t)(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch())).count();
     
-    EVP_CIPHER_CTX_init(&m_cCipherContext);
+    EVP_CIPHER_CTX_init(m_cCipherContext);
     
     // select on key size
     switch (cKey.size()) {
         
     case 128 / 8:
-        EVP_EncryptInit(&m_cCipherContext, EVP_aes_128_cbc(), cKey.get(), cIV.get());
+        EVP_EncryptInit(m_cCipherContext, EVP_aes_128_cbc(), cKey.get(), cIV.get());
         m_sCBCAES = "cbc-aes-128";
         break;
         
     case 192 / 8:
-        EVP_EncryptInit(&m_cCipherContext, EVP_aes_192_cbc(), cKey.get(), cIV.get());
+        EVP_EncryptInit(m_cCipherContext, EVP_aes_192_cbc(), cKey.get(), cIV.get());
         m_sCBCAES = "cbc-aes-192";
         break;
         
     case 256 / 8:
-        EVP_EncryptInit(&m_cCipherContext, EVP_aes_256_cbc(), cKey.get(), cIV.get());
+        EVP_EncryptInit(m_cCipherContext, EVP_aes_256_cbc(), cKey.get(), cIV.get());
         m_sCBCAES = "cbc-aes-256";
         break;
 

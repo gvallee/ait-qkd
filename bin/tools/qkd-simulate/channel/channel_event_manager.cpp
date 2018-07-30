@@ -63,7 +63,8 @@ channel_event_manager::channel_event_manager() : m_nSimulationEndTime(0LL) {
  * @param   cEvent      the event to add
  * @return  id of new event inserted
  */
-uint64_t channel_event_manager::add_event(event & cEvent) throw (std::runtime_error) {
+uint64_t channel_event_manager::add_event(event & cEvent) //throw (std::runtime_error)
+{
     
     ++m_nNextId;
     cEvent.nId = m_nNextId;
